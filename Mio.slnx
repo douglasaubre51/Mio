@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Mio/Mio.Droid/Mio.Droid.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Mio/Mio.WinUI/Mio.WinUI.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="Mio/Mio/Mio.csproj" />
+</Solution>

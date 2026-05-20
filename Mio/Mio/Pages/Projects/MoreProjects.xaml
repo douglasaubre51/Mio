@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mio.Pages.Projects.MoreProjects"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:Mio.PageModels.ProjectsPageModels"
+    xmlns:templates="clr-namespace:Mio.CollectionModels"
+    x:DataType="pagemodels:MoreProjectsPageModel"
+    Shell.NavBarIsVisible="False">
+    <CollectionView
+        Margin="16,0,16,8"
+        ItemsSource="{x:Binding Projects}"
+        SelectionChanged="ProjectSelectionChanged"
+        SelectionMode="Single">
+        <CollectionView.Header>
+            <VerticalStackLayout Margin="0,16" Spacing="4">
+                <Button
+                    Command="{x:Binding GoBackHomeCommand}"
+                    ImageSource="arrow_back_ios_24dp.png"
+                    Style="{x:StaticResource FlatIconButton}"
+                    Text="Home" />
+
+                <Label
+                    Margin="0,16"
+                    Style="{x:StaticResource SectionTitle}"
+                    Text="{x:Binding PageTitle}" />
+            </VerticalStackLayout>
+        </CollectionView.Header>
+
+        <CollectionView.ItemTemplate>
+            <templates:ProjectListTemplate />
+        </CollectionView.ItemTemplate>
+
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout ItemSpacing="1" Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+    </CollectionView>
+</ContentPage>

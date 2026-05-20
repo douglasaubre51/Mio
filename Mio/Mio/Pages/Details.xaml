@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mio.Pages.Details"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:Mio.PageModels"
+    Title="{x:Binding CurrentProject.Title}"
+    x:DataType="pagemodels:DetailsPageModel"
+    Shell.NavBarIsVisible="False">
+    <ScrollView Orientation="Vertical">
+        <Grid
+            Margin="16"
+            ColumnDefinitions="*,*"
+            RowDefinitions="Auto,Auto,Auto,*,Auto"
+            RowSpacing="16">
+
+            <!--  Title section  -->
+            <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2">
+                <Button
+                    Command="{x:Binding GoBackCommand}"
+                    ImageSource="arrow_back_ios_24dp.png"
+                    Style="{x:StaticResource FlatIconButton}"
+                    Text="Back" />
+
+                <Label
+                    Margin="0,16"
+                    Style="{x:StaticResource SectionTitle}"
+                    Text="{x:Binding CurrentProject.Title}" />
+            </VerticalStackLayout>
+
+
+            <!--  Desc section  -->
+            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                <Label Style="{x:StaticResource CardHeader}" Text="Description" />
+
+                <Label Style="{x:StaticResource CardDetail}" Text="{x:Binding CurrentProject.Desc}" />
+            </VerticalStackLayout>
+
+            <!--  Detail bar  -->
+            <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                <Label
+                    Margin="0,24,0,0"
+                    Style="{x:StaticResource CardHeader}"
+                    Text="Dependencies" />
+
+                <Label Style="{x:StaticResource CardDetail}" Text="{x:Binding CurrentProject.Dependencies}" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                <Label
+                    Margin="0,24,0,0"
+                    Style="{x:StaticResource CardHeader}"
+                    Text="Specifications" />
+
+                <Label Style="{x:StaticResource CardDetail}" Text="{x:Binding CurrentProject.ProjectSpec}" />
+            </VerticalStackLayout>
+
+            <!--  Action btn bar  -->
+            <HorizontalStackLayout
+                Grid.Row="3"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                Spacing="8"
+                VerticalOptions="End">
+                <!--  Edit  -->
+                <Button
+                    Command="{x:Binding GoToEditProjectCommand}"
+                    ImageSource="edit_28dp.png"
+                    Style="{x:StaticResource FlatIconButton}" />
+
+                <!--  Bookmark btns  -->
+                <Button
+                    Command="{x:Binding AddBookmarkCommand}"
+                    ImageSource="bookmark_add_24dp.png"
+                    IsVisible="{x:Binding IsNotBookmarked}"
+                    Style="{x:StaticResource FlatIconButton}" />
+                <Button
+                    Command="{x:Binding RemoveBookmarkCommand}"
+                    ImageSource="bookmark_remove_24dp.png"
+                    IsVisible="{x:Binding IsBookmarked}"
+                    Style="{x:StaticResource FlatIconButton}" />
+            </HorizontalStackLayout>
+
+            <!--  Delete  -->
+            <Button
+                Grid.Row="3"
+                Grid.Column="1"
+                Command="{x:Binding DeleteProjectCommand}"
+                HorizontalOptions="End"
+                ImageSource="delete_24dp_red.png"
+                Style="{x:StaticResource FlatIconButton}"
+                VerticalOptions="End" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

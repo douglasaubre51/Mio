@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mio.Pages.Search"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:Mio.PageModels"
+    xmlns:templates="clr-namespace:Mio.CollectionModels"
+    x:DataType="pagemodels:SearchPageModel"
+    Shell.NavBarIsVisible="False">
+    <Grid Margin="16" RowDefinitions="*,Auto">
+        <CollectionView
+            Grid.Row="0"
+            Margin="0,0,0,16"
+            ItemsSource="{x:Binding Projects}"
+            SelectionChanged="ProjectSelectionChanged"
+            SelectionMode="Single">
+            <CollectionView.Header>
+                <HorizontalStackLayout Margin="0,16" Spacing="16">
+                    <Label Style="{x:StaticResource SectionTitle}" Text="Find project" />
+
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="{x:Binding IsBusy}"
+                        IsVisible="{x:Binding IsBusy}" />
+                </HorizontalStackLayout>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <templates:ProjectListTemplate />
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <templates:SecondaryEmptyCollectionTemplate />
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+
+        <HorizontalStackLayout
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            Spacing="8">
+            <Entry
+                ClearButtonVisibility="WhileEditing"
+                MinimumWidthRequest="{x:OnPlatform WinUI=500,
+                                                   Android=240}"
+                Placeholder="Project name"
+                ReturnCommand="{x:Binding SearchProjectCommand}"
+                Text="{x:Binding SearchText}" />
+
+            <Button
+                Command="{x:Binding SearchProjectCommand}"
+                ImageSource="search_28dp.png"
+                Style="{x:StaticResource FlatIconButton}" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

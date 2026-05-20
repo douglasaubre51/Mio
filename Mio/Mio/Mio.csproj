@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>Mio</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<Nullable>enable</Nullable>
+		<MauiEnableXamlCBindingCodeGeneration>true</MauiEnableXamlCBindingCodeGeneration>
+		<PublishAot>True</PublishAot>
+		<PublishTrimmed>False</PublishTrimmed>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<ApplicationTitle>Mio</ApplicationTitle>
+		<ApplicationId>com.forge.mio</ApplicationId>
+		<ApplicationDisplayVersion>2.0.0</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<ApplicationTitle>Mio</ApplicationTitle>
+		<ApplicationId>com.forge.mio</ApplicationId>
+		<ApplicationDisplayVersion>2.0.0</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="14.1.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.60" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiXaml Update="CollectionModels\EmptyCollectionTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="CollectionModels\ProjectGalleryTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="CollectionModels\ProjectListTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="CollectionModels\ProjectTactileTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="CollectionModels\SavedTemplates\ProjectListTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="CollectionModels\SecondaryEmptyCollectionTemplate.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\AddProject.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Details.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\EditProject.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Finished.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Projects\MoreProjects.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Saved.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Pages\Search.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Widgets\GalleryWidget.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\dotnet_bot.png" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0-android</TargetFramework>
+		<SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Mio</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseMaui>true</UseMaui>
+
+		<UseMaterial3>true</UseMaterial3>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <IsAotCompatible>True</IsAotCompatible>
+	  <EnableLLVM>False</EnableLLVM>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <IsAotCompatible>True</IsAotCompatible>
+	  <EnableLLVM>False</EnableLLVM>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.60" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Mio\Mio.csproj" />
+	</ItemGroup>
+
+</Project>

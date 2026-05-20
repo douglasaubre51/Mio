@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+    <style name="MainTheme" parent="Maui.MainTheme.NoActionBar">
+        <!-- This line kills the orange! -->
+        <item name="android:colorControlHighlight">@color/my_ripple_color</item>
+        <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
+       <item name="android:colorLongPressedHighlight">@color/ListViewHighlighted</item>
+       <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
+       <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
+       <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
+    </style>
+
+    <color name="ListViewSelected">#00000000</color>
+    <color name="ListViewHighlighted">#00000000</color>
+</resources>

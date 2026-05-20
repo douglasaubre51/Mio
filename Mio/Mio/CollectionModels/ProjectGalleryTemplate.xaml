@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DataTemplate
+    x:Class="Mio.CollectionModels.ProjectGalleryTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Mio.Models"
+    x:DataType="models:ProjectModel">
+    <Border Style="{x:StaticResource CardStyle}">
+        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,*,Auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"
+                Style="{x:StaticResource CardHeader}"
+                Text="{x:Binding Title}" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                LineBreakMode="TailTruncation"
+                MaxLines="2"
+                Style="{x:StaticResource CardDetail}"
+                Text="{x:Binding ShortDesc}" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Style="{x:StaticResource CardFooter}"
+                Text="{x:Binding ProjectSpec}"
+                VerticalOptions="End" />
+        </Grid>
+    </Border>
+</DataTemplate>

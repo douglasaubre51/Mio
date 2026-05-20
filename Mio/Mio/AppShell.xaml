@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Mio.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Mio"
+    xmlns:pages="clr-namespace:Mio.Pages"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Mio"
+    FlyoutBackground="{x:AppThemeBinding Light={x:StaticResource FlyoutBg},
+                                         Dark={x:StaticResource Gray600}}"
+    Shell.FlyoutBehavior="{OnPlatform Android=Disabled,
+                                      WinUI=Locked}">
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{x:AppThemeBinding Light={x:StaticResource PrimaryBg}, Dark={x:StaticResource OffBlack}}" StatusBarStyle="{x:AppThemeBinding Light=DarkContent, Dark=LightContent}" />
+    </Shell.Behaviors>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="{OnPlatform Android=True, WinUI=False}">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{x:DataTemplate local:MainPage}"
+            Icon="ic_fluent_home_28_regular.png"
+            Route="MainPage" />
+
+        <ShellContent
+            Title="New"
+            ContentTemplate="{x:DataTemplate pages:AddProject}"
+            Icon="docs_add_on_28dp.png"
+            Route="AddProject" />
+
+        <ShellContent
+            Title="Search"
+            ContentTemplate="{x:DataTemplate pages:Search}"
+            Icon="search_28dp.png"
+            Route="Search" />
+
+        <ShellContent
+            Title="Saved"
+            ContentTemplate="{x:DataTemplate pages:Saved}"
+            Icon="bookmarks_28dp.png"
+            Route="Saved" />
+
+        <ShellContent
+            Title="Finished"
+            ContentTemplate="{x:DataTemplate pages:Finished}"
+            Icon="checklist_28dp_000000.png"
+            Route="Finished" />
+    </FlyoutItem>
+</Shell>

@@ -1,0 +1,12 @@
+﻿global using CommunityToolkit.Maui;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using Microsoft.Extensions.Logging;
+global using Mio.Models;
+global using Mio.PageModels;
+global using Mio.Pages;
+global using Mio.Pages.Projects;
+global using Mio.Services;
+global using Mio.Storage;
+global using Mio.Utilities;
+global using System.Diagnostics;

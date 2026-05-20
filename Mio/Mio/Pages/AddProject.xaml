@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Mio.Pages.AddProject"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:Mio.PageModels"
+    Title="Add new project"
+    x:DataType="pagemodels:AddProjectPageModel"
+    Shell.NavBarIsVisible="False">
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout
+            Margin="16"
+            HorizontalOptions="{OnPlatform Android=Fill,
+                                           WinUI=Fill}"
+            MaximumWidthRequest="{OnPlatform WinUI=700}"
+            Spacing="16">
+            <Label
+                Margin="0,16"
+                Style="{x:StaticResource SectionTitle}"
+                Text="Add new project" />
+
+            <Label IsVisible="{x:OnPlatform Android=False}" Text="Title" />
+            <Entry Placeholder="Title" Text="{x:Binding TitleField}" />
+
+            <Label IsVisible="{x:OnPlatform Android=False}" Text="Describe in a few words" />
+            <Entry Placeholder="Describe in few words" Text="{x:Binding ShortDescField}" />
+
+            <Label Text="Full Description" />
+            <Editor HeightRequest="140" Text="{x:Binding DescField}" />
+
+            <Label Text="Project Specifications" />
+            <Editor HeightRequest="140" Text="{x:Binding ProjectSpecField}" />
+
+            <Label Text="Required Dependencies" />
+            <Editor HeightRequest="140" Text="{x:Binding DependField}" />
+
+            <Grid
+                ColumnDefinitions="100,Auto"
+                RowDefinitions="Auto,Auto,Auto"
+                RowSpacing="4">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Ongoing"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Released"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Finished"
+                    VerticalOptions="Center" />
+                <Switch
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    IsToggled="{x:Binding IsOngoing}" />
+                <Switch
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    IsToggled="{x:Binding IsReleased}" />
+                <Switch
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    IsToggled="{x:Binding IsFinished}" />
+            </Grid>
+
+            <Button
+                Command="{x:Binding NewProjectCommand}"
+                HorizontalOptions="{OnPlatform Android=Fill,
+                                               WinUI=End}"
+                MinimumWidthRequest="200"
+                Style="{x:StaticResource SquircleButton}"
+                Text="Continue" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
