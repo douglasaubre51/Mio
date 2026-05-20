@@ -31,7 +31,7 @@ public partial class GalleryWidget : CollectionView
 
         await Shell.Current.GoToAsync(
             "Details",
-            false,
+            true,
             new Dictionary<string, object>
             {
                 {"CurrentProject",project }

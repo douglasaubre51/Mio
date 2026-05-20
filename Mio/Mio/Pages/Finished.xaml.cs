@@ -23,7 +23,7 @@ public partial class Finished : ContentPage
 
         await Shell.Current.GoToAsync(
             "Details",
-            false,
+            true,
             new Dictionary<string, object>
             {
                 {"CurrentProject",project }

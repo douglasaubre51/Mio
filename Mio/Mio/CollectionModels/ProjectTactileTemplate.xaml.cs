@@ -16,7 +16,7 @@ public partial class ProjectTactileTemplate : DataTemplate
 
         await Shell.Current.GoToAsync(
             "Details",
-            false,
+            true,
             new Dictionary<string, object>
             {
                 {"CurrentProject",project }

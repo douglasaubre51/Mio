@@ -43,7 +43,7 @@ public partial class MainPageModel(
 
             await Shell.Current.GoToAsync(
                "Details",
-               false,
+               true,
                new Dictionary<string, object>
                {
                 {
@@ -127,7 +127,7 @@ public partial class MainPageModel(
     async Task GoToMoreOngoingProjects()
         => await Shell.Current.GoToAsync(
             "MoreProjects",
-            false,
+            true,
             new Dictionary<string, object>
             {
                 {"Title", "Ongoing projects"},
@@ -140,7 +140,7 @@ public partial class MainPageModel(
     async Task GoToFindMoreProjects()
         => await Shell.Current.GoToAsync(
             "MoreProjects",
-            false,
+            true,
             new Dictionary<string, object>
             {
                 {"Title", "Find new project"},
@@ -153,7 +153,7 @@ public partial class MainPageModel(
     async Task GoToMoreReleasedProjects()
         => await Shell.Current.GoToAsync(
             "MoreProjects",
-            false,
+            true,
             new Dictionary<string, object>
             {
                 {"Title", "Released projects"},

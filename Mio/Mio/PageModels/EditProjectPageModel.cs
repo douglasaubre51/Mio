@@ -142,7 +142,7 @@ public partial class EditProjectPageModel(
     {
         try
         {
-            await Shell.Current.GoToAsync("..", false);
+            await Shell.Current.GoToAsync("..", true);
         }
         catch (Exception ex)
         {
