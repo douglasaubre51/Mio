@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:collectionmodels="clr-namespace:Mio.CollectionModels"
     x:Name="ItemsCollection"
-    HorizontalScrollBarVisibility="Default"
+    HorizontalScrollBarVisibility="Never"
     SelectionChanged="ProjectSelectionChanged"
     SelectionMode="Single">
 
@@ -13,9 +13,9 @@
         <collectionmodels:ProjectGalleryTemplate />
     </CollectionView.ItemTemplate>
 
-    <CollectionView.EmptyView>
+    <!--<CollectionView.EmptyView>
         <collectionmodels:EmptyCollectionTemplate />
-    </CollectionView.EmptyView>
+    </CollectionView.EmptyView>-->
 
     <CollectionView.ItemsLayout>
         <LinearItemsLayout ItemSpacing="8" Orientation="Horizontal" />

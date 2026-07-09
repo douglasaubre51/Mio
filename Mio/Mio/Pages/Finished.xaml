@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="Mio.Pages.Finished"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:Mio.PageModels"
-    xmlns:templates="clr-namespace:Mio.CollectionModels"
-    Title="Finished"
-    x:DataType="pagemodels:FinishedPageModel"
-    Shell.NavBarIsVisible="False">
-    <CollectionView
-        Margin="16"
-        ItemsSource="{x:Binding Projects}"
-        SelectionChanged="ProjectSelectionChanged"
-        SelectionMode="Single">
+<ContentPage x:Class="Mio.Pages.Finished"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pagemodels="clr-namespace:Mio.PageModels"
+             xmlns:templates="clr-namespace:Mio.CollectionModels"
+             Title="Finished"
+             x:DataType="pagemodels:FinishedPageModel"
+             Shell.NavBarIsVisible="False">
+    <CollectionView Margin="16"
+                    ItemsSource="{x:Binding Projects}"
+                    SelectionChanged="ProjectSelectionChanged"
+                    SelectionMode="Single">
         <CollectionView.Header>
             <HorizontalStackLayout Margin="0,16" Spacing="16">
                 <Label Style="{x:StaticResource SectionTitle}" Text="Finished projects" />
 
-                <ActivityIndicator
-                    HorizontalOptions="Center"
-                    IsRunning="{x:Binding IsBusy}"
-                    IsVisible="{x:Binding IsBusy}" />
+                <ActivityIndicator HorizontalOptions="Center"
+                                   IsRunning="{x:Binding IsBusy}"
+                                   IsVisible="{x:Binding IsBusy}" />
             </HorizontalStackLayout>
         </CollectionView.Header>
 

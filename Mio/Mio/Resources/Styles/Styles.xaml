@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+
+    <!--  Label  -->
+    <Style x:Key="HeroTitle" TargetType="Label">
+        <Setter Property="FontFamily" Value="PoppinsBold" />
+        <Setter Property="FontSize" Value="48" />
+        <Setter Property="TextColor" Value="{x:AppThemeBinding Light={x:StaticResource PrimaryBgDark}, Dark=White}" />
+    </Style>
+
     <!--  Buttons  -->
     <Style x:Key="SquircleButton" TargetType="Button">
         <Setter Property="TextColor" Value="White" />
@@ -128,7 +136,7 @@
     </Style>
 
     <Style x:Key="TactileButton" TargetType="Button">
-        <Setter Property="TextColor" Value="#ad46ff" />
+        <Setter Property="TextColor" Value="{x:StaticResource PrimaryCardSurface}" />
         <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light=White, Dark=Transparent}" />
         <Setter Property="FontFamily" Value="PoppinsMedium" />
         <Setter Property="FontSize" Value="14" />
@@ -146,7 +154,7 @@
                     <VisualState x:Name="PointerOver">
                         <VisualState.Setters>
                             <Setter Property="TextColor" Value="White" />
-                            <Setter Property="BackgroundColor" Value="#ad46ff" />
+                            <Setter Property="BackgroundColor" Value="{x:StaticResource PrimaryCardSurface}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -182,18 +190,18 @@
 
     <Style x:Key="SectionTitle" TargetType="Label">
         <Setter Property="FontFamily" Value="PoppinsSemiBold" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="LineBreakMode" Value="TailTruncation" />
         <Setter Property="MaxLines" Value="1" />
     </Style>
 
     <Style x:Key="CardHeader" TargetType="Label">
         <Setter Property="FontFamily" Value="PoppinsMedium" />
-        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontSize" Value="14" />
     </Style>
     <Style x:Key="CardDetail" TargetType="Label">
         <Setter Property="FontFamily" Value="PoppinsRegular" />
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontSize" Value="12" />
     </Style>
     <Style x:Key="CardFooter" TargetType="Label">
         <Setter Property="FontFamily" Value="PoppinsRegular" />
@@ -217,22 +225,21 @@
 
     <!--  new projectcard style  -->
     <Style x:Key="CardStyle" TargetType="Border">
-        <Setter Property="MaximumHeightRequest" Value="200" />
-        <Setter Property="MaximumWidthRequest" Value="400" />
-        <Setter Property="MinimumHeightRequest" Value="160" />
-        <Setter Property="MinimumWidthRequest" Value="300" />
+        <Setter Property="HeightRequest" Value="160" />
+        <Setter Property="WidthRequest" Value="300" />
         <Setter Property="StrokeThickness" Value="0" />
-        <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
         <Setter Property="Padding" Value="16" />
-        <Setter Property="Background" Value="{x:AppThemeBinding Light=White, Dark={x:StaticResource Gray600Brush}}" />
+        <Setter Property="Background" Value="{x:AppThemeBinding Light=White, Dark={x:StaticResource PrimaryCardSurface}}" />
     </Style>
 
 
 
     <Style TargetType="ActivityIndicator">
-        <Setter Property="Color" Value="{AppThemeBinding Light={x:StaticResource Primary}, Dark={x:StaticResource White}}" />
-        <Setter Property="WidthRequest" Value="{x:OnIdiom Desktop=24, Phone=14}" />
-        <Setter Property="HeightRequest" Value="{x:OnIdiom Desktop=24, Phone=14}" />
+        <Setter Property="Color" Value="{AppThemeBinding Light={x:StaticResource PrimaryBgDark}, Dark={x:StaticResource Primary}}" />
+
+        <Setter Property="WidthRequest" Value="{x:OnIdiom Desktop=32, Phone=24}" />
+        <Setter Property="HeightRequest" Value="{x:OnIdiom Desktop=32, Phone=24}" />
     </Style>
 
     <Style TargetType="IndicatorView">
@@ -636,16 +643,15 @@
         <Setter Property="Padding" Value="0" />
 
         <!--  Background page color here !  -->
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={x:StaticResource PrimaryBg}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={x:StaticResource PrimaryBg}, Dark={StaticResource PrimaryBgDark}}" />
     </Style>
 
     <Style ApplyToDerivedTypes="True" TargetType="Shell">
-        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={x:StaticResource PrimaryBg}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={x:StaticResource PrimaryBg}, Dark={StaticResource PrimaryBgDark}}" />
         <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
         <Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
-        <Setter Property="Shell.NavBarHasShadow" Value="False" />
         <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light=White, Dark={StaticResource Black}}" />
         <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Light=Blue, Dark={StaticResource White}}" />
         <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light=Blue, Dark={StaticResource White}}" />

@@ -8,6 +8,11 @@
 
     <Color x:Key="FlyoutBg">#f3f4f6</Color>
     <Color x:Key="PrimaryBg">#b8e6fe</Color>
+    <Color x:Key="PrimaryBgDark">#082f49</Color>
+
+    <Color x:Key="PrimaryCardSurface">#0c4a6e</Color>
+
+
     <Color x:Key="PrimaryTextDark">WhiteSmoke</Color>
 
     <Color x:Key="Primary">#512BD4</Color>

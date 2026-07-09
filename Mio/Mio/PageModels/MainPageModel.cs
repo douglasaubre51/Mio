@@ -62,6 +62,7 @@ public partial class MainPageModel(
     {
         try
         {
+            IsBusy = true;
             IsProjectCollectionRefreshing = true;
 
             await Task.Run(async () =>
@@ -82,6 +83,7 @@ public partial class MainPageModel(
         }
         finally
         {
+            IsBusy = false;
             IsProjectCollectionRefreshing = false;
         }
     }
