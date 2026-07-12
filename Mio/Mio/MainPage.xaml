@@ -16,14 +16,15 @@
         <CollectionView.Header>
             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
                 <!--  Spinner  -->
-                <ActivityIndicator Grid.RowSpan="6"
+                <ActivityIndicator Margin="16,0"
+                                   HorizontalOptions="End"
                                    IsRunning="{x:Binding IsProjectCollectionRefreshing}"
-                                   IsVisible="{x:Binding IsProjectCollectionRefreshing}"
-                                   VerticalOptions="Center" />
+                                   IsVisible="{x:Binding IsProjectCollectionRefreshing}" />
 
                 <!--  Title  -->
                 <Label Grid.Row="0"
                        Margin="8"
+                       HorizontalOptions="Center"
                        Style="{x:StaticResource HeroTitle}"
                        Text="Mio" />
 
@@ -33,12 +34,6 @@
                            Style="{x:StaticResource SectionTitle}"
                            Text="Ongoing projects"
                            VerticalOptions="Center" />
-
-                    <!--  spinner  -->
-                    <!--
-                    <ActivityIndicator IsRunning="{x:Binding IsProjectCollectionRefreshing}"
-                                       IsVisible="{x:Binding IsProjectCollectionRefreshing}"
-                                       VerticalOptions="Center" />-->
 
                     <Button Padding="0"
                             Command="{x:Binding GoToMoreOngoingProjectsCommand}"
@@ -58,13 +53,6 @@
                            Style="{x:StaticResource SectionTitle}"
                            Text="Find new project"
                            VerticalOptions="Center" />
-
-                    <!--  spinner  -->
-                    <!--
-                    <ActivityIndicator Margin="16,0,0,0"
-                                       IsRunning="{x:Binding IsProjectCollectionRefreshing}"
-                                       IsVisible="{x:Binding IsProjectCollectionRefreshing}"
-                                       VerticalOptions="Center" />-->
 
                     <Button Command="{x:Binding GoToFindMoreProjectsCommand}"
                             ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,

@@ -14,38 +14,48 @@
                              Spacing="16">
             <Label Margin="0,16"
                    Style="{x:StaticResource SectionTitle}"
-                   Text="Add new project" />
+                   Text="Create new project" />
 
-            <Label IsVisible="{x:OnPlatform Android=False}" Text="Title" />
-            <Entry Placeholder="Title" Text="{x:Binding TitleField}" />
+            <Entry Placeholder="Add a Title" Text="{x:Binding TitleField}" />
 
-            <Label IsVisible="{x:OnPlatform Android=False}" Text="Describe in a few words" />
-            <Entry Placeholder="Describe in few words" Text="{x:Binding ShortDescField}" />
+            <Entry Placeholder="Describe in a few words" Text="{x:Binding ShortDescField}" />
 
-            <Label Text="Full Description" />
-            <Editor HeightRequest="140" Text="{x:Binding DescField}" />
+            <Editor HeightRequest="140"
+                    Placeholder="Full description"
+                    Text="{x:Binding DescField}" />
 
-            <Label Text="Project Specifications" />
-            <Editor HeightRequest="140" Text="{x:Binding ProjectSpecField}" />
+            <Editor HeightRequest="140"
+                    Placeholder="Project specifications"
+                    Text="{x:Binding ProjectSpecField}" />
 
-            <Label Text="Required Dependencies" />
-            <Editor HeightRequest="140" Text="{x:Binding DependField}" />
+            <Editor HeightRequest="140"
+                    Placeholder="Required dependencies"
+                    Text="{x:Binding DependField}" />
+
+            <Label Margin="0,16,0,0"
+                   FontFamily="PoppinsSemiBold"
+                   Style="{x:StaticResource CardHeader}"
+                   Text="Project status" />
 
             <Grid ColumnDefinitions="100,Auto"
                   RowDefinitions="Auto,Auto,Auto"
                   RowSpacing="4">
                 <Label Grid.Row="0"
                        Grid.Column="0"
+                       FontFamily="PoppinsRegular"
                        Text="Ongoing"
                        VerticalOptions="Center" />
                 <Label Grid.Row="1"
                        Grid.Column="0"
+                       FontFamily="PoppinsRegular"
                        Text="Released"
                        VerticalOptions="Center" />
                 <Label Grid.Row="2"
                        Grid.Column="0"
+                       FontFamily="PoppinsRegular"
                        Text="Finished"
                        VerticalOptions="Center" />
+
                 <Switch Grid.Row="0"
                         Grid.Column="1"
                         IsToggled="{x:Binding IsOngoing}" />

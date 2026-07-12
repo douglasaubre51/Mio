@@ -212,9 +212,12 @@
 
     <!--  Rounded Grids  -->
     <Style x:Key="RoundedCardSurface" TargetType="Border">
-        <Setter Property="Background" Value="{x:AppThemeBinding Light=White, Dark={x:StaticResource Gray600Brush}}" />
-        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="Background" Value="{x:AppThemeBinding Light=White, Dark=Transparent}" />
+        <Setter Property="StrokeThickness" Value="{x:AppThemeBinding Light=0, Dark=1}" />
         <Setter Property="StrokeShape" Value="RoundRectangle 4" />
+
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="Stroke" Value="DimGrey" />
     </Style>
 
     <Style x:Key="CarouselCardStyle" TargetType="Border">
@@ -326,9 +329,9 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={x:StaticResource White}, Dark=Transparent}" />
         <Setter Property="Background" Value="{x:OnPlatform Android=Transparent}" />
-        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontFamily" Value="PoppinsRegular" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray500}}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray500}}" />
         <Setter Property="MinimumHeightRequest" Value="44" />
         <Setter Property="MinimumWidthRequest" Value="44" />
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -349,9 +352,9 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={x:StaticResource White}, Dark=Transparent}" />
         <Setter Property="Background" Value="{x:OnPlatform Android=Transparent}" />
-        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontFamily" Value="PoppinsRegular" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Gray500}}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray500}}" />
         <Setter Property="MinimumHeightRequest" Value="44" />
         <Setter Property="MinimumWidthRequest" Value="44" />
         <Setter Property="VisualStateManager.VisualStateGroups">

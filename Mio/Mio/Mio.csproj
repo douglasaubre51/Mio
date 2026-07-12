@@ -61,6 +61,9 @@
 		<MauiXaml Update="CollectionModels\SavedTemplates\ProjectListTemplate.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="CollectionModels\SearchEmptyCollectionTemplate.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="CollectionModels\SecondaryEmptyCollectionTemplate.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

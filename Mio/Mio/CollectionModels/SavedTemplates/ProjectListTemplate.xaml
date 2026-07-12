@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<DataTemplate
-    x:Class="Mio.CollectionModels.SavedTemplates.ProjectListTemplate"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:models="clr-namespace:Mio.Models"
-    x:DataType="models:ProjectModel">
+<DataTemplate x:Class="Mio.CollectionModels.SavedTemplates.ProjectListTemplate"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:models="clr-namespace:Mio.Models"
+              x:DataType="models:ProjectModel">
     <Border Style="{x:StaticResource RoundedCardSurface}">
         <Grid Margin="8">
-            <Label
-                Grid.Column="0"
-                Margin="8,0,0,0"
-                Style="{x:StaticResource CardHeader}"
-                Text="{x:Binding Title}"
-                VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Margin="8,0,0,0"
+                   Style="{x:StaticResource CardHeader}"
+                   Text="{x:Binding Title}"
+                   VerticalOptions="Center" />
 
-            <Label
-                Grid.Column="1"
-                IsVisible="{OnPlatform Android=False,
-                                       WinUI=True}"
-                LineBreakMode="TailTruncation"
-                MaxLines="1"
-                Style="{x:StaticResource CardDetail}"
-                Text="{x:Binding ShortDesc}"
-                VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   IsVisible="{OnPlatform Android=False,
+                                          WinUI=True}"
+                   LineBreakMode="TailTruncation"
+                   MaxLines="1"
+                   Style="{x:StaticResource CardDetail}"
+                   Text="{x:Binding ShortDesc}"
+                   VerticalOptions="Center" />
 
-            <Label
-                Grid.Column="2"
-                HorizontalOptions="Center"
-                LineBreakMode="TailTruncation"
-                MaxLines="1"
-                Style="{x:StaticResource CardDetail}"
-                Text="{x:Binding ProjectSpec}"
-                VerticalOptions="Center" />
+            <Label Grid.Column="2"
+                   HorizontalOptions="Center"
+                   LineBreakMode="TailTruncation"
+                   MaxLines="1"
+                   Style="{x:StaticResource CardDetail}"
+                   Text="{x:Binding ProjectSpec}"
+                   VerticalOptions="Center" />
 
-            <Button
-                Grid.Column="3"
-                Background="{x:AppThemeBinding Dark={x:StaticResource Gray400Brush}}"
-                Clicked="RemoveBookmarkButtonClicked"
-                HorizontalOptions="End"
-                ImageSource="bookmark_remove_24dp.png"
-                Style="{x:StaticResource FlatIcon}"
-                VerticalOptions="Start" />
+            <Button Grid.Column="3"
+                    Background="{x:AppThemeBinding Dark={x:StaticResource Gray400Brush}}"
+                    Clicked="RemoveBookmarkButtonClicked"
+                    HorizontalOptions="End"
+                    ImageSource="bookmark_remove_24dp.png"
+                    Style="{x:StaticResource FlatIcon}"
+                    VerticalOptions="Start" />
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

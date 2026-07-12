@@ -7,6 +7,11 @@
              x:DataType="pagemodels:SearchPageModel"
              Shell.NavBarIsVisible="False">
     <Grid Margin="16" RowDefinitions="*,Auto">
+        <ActivityIndicator Grid.Row="0"
+                           HorizontalOptions="Center"
+                           IsRunning="{x:Binding IsBusy}"
+                           IsVisible="{x:Binding IsBusy}" />
+
         <CollectionView Grid.Row="0"
                         Margin="0,0,0,16"
                         ItemsSource="{x:Binding Projects}"
@@ -14,11 +19,8 @@
                         SelectionMode="Single">
             <CollectionView.Header>
                 <HorizontalStackLayout Margin="0,16" Spacing="16">
-                    <Label Style="{x:StaticResource SectionTitle}" Text="Find project" />
+                    <Label Style="{x:StaticResource SectionTitle}" Text="Find a project" />
 
-                    <ActivityIndicator HorizontalOptions="Center"
-                                       IsRunning="{x:Binding IsBusy}"
-                                       IsVisible="{x:Binding IsBusy}" />
                 </HorizontalStackLayout>
             </CollectionView.Header>
 
@@ -27,11 +29,11 @@
             </CollectionView.ItemTemplate>
 
             <CollectionView.EmptyView>
-                <templates:SecondaryEmptyCollectionTemplate />
+                <templates:SearchEmptyCollectionTemplate />
             </CollectionView.EmptyView>
 
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+                <LinearItemsLayout ItemSpacing="1" Orientation="Vertical" />
             </CollectionView.ItemsLayout>
         </CollectionView>
 

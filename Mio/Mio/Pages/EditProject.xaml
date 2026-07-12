@@ -1,84 +1,85 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="Mio.Pages.EditProject"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:Mio.PageModels"
-    x:DataType="pagemodels:EditProjectPageModel"
-    Shell.NavBarIsVisible="False"
-    Shell.TabBarIsVisible="False">
+<ContentPage x:Class="Mio.Pages.EditProject"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pagemodels="clr-namespace:Mio.PageModels"
+             x:DataType="pagemodels:EditProjectPageModel"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
     <ScrollView Orientation="Vertical">
-        <VerticalStackLayout
-            Margin="16"
-            MaximumWidthRequest="{x:OnPlatform WinUI=700}"
-            Spacing="16">
+        <VerticalStackLayout Margin="16"
+                             MaximumWidthRequest="{x:OnPlatform WinUI=700}"
+                             Spacing="16">
             <!--  Top bar  -->
             <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2">
-                <Button
-                    Command="{x:Binding GoBackCommand}"
-                    ImageSource="arrow_back_ios_24dp.png"
-                    Style="{x:StaticResource FlatIconButton}"
-                    Text="Back" />
+                <Button Command="{x:Binding GoBackCommand}"
+                        ImageSource="arrow_back_ios_24dp.png"
+                        Style="{x:StaticResource FlatIconButton}"
+                        Text="Back" />
 
-                <Label
-                    Margin="0,16"
-                    Style="{x:StaticResource SectionTitle}"
-                    Text="{x:Binding CurrentProject.Title,
-                                     StringFormat='Edit {0}'}" />
+                <Label Margin="0,16"
+                       Style="{x:StaticResource SectionTitle}"
+                       Text="{x:Binding CurrentProject.Title,
+                                        StringFormat='Edit project {0}'}" />
             </VerticalStackLayout>
 
-            <Label Text="Title" />
-            <Entry Text="{x:Binding TitleField}" />
+            <Entry Placeholder="Change title" Text="{x:Binding TitleField}" />
 
-            <Label Text="Describe in a few words" />
-            <Entry Text="{x:Binding ShortDescField}" />
+            <Entry Placeholder="Change brief description" Text="{x:Binding ShortDescField}" />
 
-            <Label Text="Full Description" />
-            <Editor HeightRequest="140" Text="{x:Binding DescField}" />
+            <Editor HeightRequest="140"
+                    Placeholder="Full description"
+                    Text="{x:Binding DescField}" />
 
-            <Label Text="Project Specifications" />
-            <Editor HeightRequest="140" Text="{x:Binding ProjectSpecField}" />
+            <Editor HeightRequest="140"
+                    Placeholder="Project specifications"
+                    Text="{x:Binding ProjectSpecField}" />
 
-            <Label Text="Required Dependencies" />
-            <Editor HeightRequest="140" Text="{x:Binding DependField}" />
+            <Editor HeightRequest="140"
+                    Placeholder="Project dependencies"
+                    Text="{x:Binding DependField}" />
 
-            <Grid
-                ColumnDefinitions="100,Auto"
-                RowDefinitions="Auto,Auto,Auto"
-                RowSpacing="4">
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Text="Ongoing"
-                    VerticalOptions="Center" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="Released"
-                    VerticalOptions="Center" />
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Text="Finished"
-                    VerticalOptions="Center" />
-                <Switch
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    IsToggled="{x:Binding IsOngoing}" />
-                <Switch
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    IsToggled="{x:Binding IsReleased}" />
-                <Switch
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    IsToggled="{x:Binding IsFinished}" />
+            <Label Margin="0,16,0,0"
+                   FontFamily="PoppinsSemiBold"
+                   Style="{x:StaticResource CardHeader}"
+                   Text="Project status" />
+
+            <Grid ColumnDefinitions="100,Auto"
+                  RowDefinitions="Auto,Auto,Auto"
+                  RowSpacing="4">
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       FontFamily="PoppinsRegular"
+                       Text="Ongoing"
+                       VerticalOptions="Center" />
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       FontFamily="PoppinsRegular"
+                       Text="Released"
+                       VerticalOptions="Center" />
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       FontFamily="PoppinsRegular"
+                       Text="Finished"
+                       VerticalOptions="Center" />
+
+                <Switch Grid.Row="0"
+                        Grid.Column="1"
+                        IsToggled="{x:Binding IsOngoing}" />
+                <Switch Grid.Row="1"
+                        Grid.Column="1"
+                        IsToggled="{x:Binding IsReleased}" />
+                <Switch Grid.Row="2"
+                        Grid.Column="1"
+                        IsToggled="{x:Binding IsFinished}" />
             </Grid>
 
-            <Button
-                Command="{x:Binding EditProjectCommand}"
-                Style="{x:StaticResource SquircleButton}"
-                Text="Edit" />
+            <Button Command="{x:Binding EditProjectCommand}"
+                    HorizontalOptions="{x:OnIdiom Desktop=End,
+                                                  Phone=Fill}"
+                    MinimumWidthRequest="200"
+                    Style="{x:StaticResource SquircleButton}"
+                    Text="Edit" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
