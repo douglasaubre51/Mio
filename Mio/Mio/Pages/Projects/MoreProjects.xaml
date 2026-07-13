@@ -13,7 +13,8 @@
         <CollectionView.Header>
             <VerticalStackLayout Margin="0,16" Spacing="4">
                 <Button Command="{x:Binding GoBackHomeCommand}"
-                        ImageSource="arrow_back_ios_24dp.png"
+                        ImageSource="{x:AppThemeBinding Light=arrow_back_ios_24dp.png,
+                                                        Dark=arrow_back_ios_new_28dp_white.png}"
                         Style="{x:StaticResource FlatIconButton}"
                         Text="Home" />
 

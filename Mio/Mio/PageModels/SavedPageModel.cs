@@ -19,8 +19,8 @@ public partial class SavedPageModel(ProjectService projectServ) : BasePageModel
         IsBusy = true;
         try
         {
-            Projects.Clear();
-            List<ProjectModel> bookmarkedProjects = await _projectServ.GetAllBookmarked();
+            List<ProjectModel> bookmarkedProjects = AppStore.Projects.Where(project => project.IsBookmarked == true)
+                .ToList();
             if (bookmarkedProjects.Count is 0) return;
 
             Projects.ReplaceRange(bookmarkedProjects);

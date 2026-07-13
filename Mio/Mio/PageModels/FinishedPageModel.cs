@@ -20,8 +20,8 @@ public partial class FinishedPageModel(
         IsBusy = true;
         try
         {
-            Projects.Clear();
-            List<ProjectModel> allProjects = await _projectServ.GetAll() ?? [];
+            List<ProjectModel> allProjects = AppStore.Projects.Where(project => project.IsFinished == true)
+                .ToList();
             if (allProjects.Count is 0) return;
 
             Projects.ReplaceRange(GetProjectByStatusUtility.GetFinishedProjects(allProjects));

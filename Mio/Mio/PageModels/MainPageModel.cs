@@ -4,14 +4,12 @@ namespace Mio.PageModels;
 
 [QueryProperty(nameof(NewProjectAdded), "NewProjectAdded")]
 public partial class MainPageModel(
-    ProjectStore projectStore,
     ProjectService projectServ) : BasePageModel
 {
     [ObservableProperty]
     private bool newProjectAdded;
 
     private readonly ProjectService _projectServ = projectServ;
-    private readonly ProjectStore _projectStore = projectStore;
 
     [ObservableProperty]
     private ProjectModel selectedProject = new();
@@ -67,13 +65,13 @@ public partial class MainPageModel(
 
             await Task.Run(async () =>
             {
-                _projectStore.Projects = await _projectServ.GetAll() ?? new List<ProjectModel>();
+                AppStore.Projects = await _projectServ.GetAll() ?? new List<ProjectModel>();
 
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    OngoingProjects.ReplaceRange(GetProjectByStatusUtility.GetOngoingProjects(_projectStore.Projects.ToList()).Take(8));
-                    FreshProjects.ReplaceRange(GetProjectByStatusUtility.GetFreshProjects(_projectStore.Projects.ToList()).Take(8));
-                    ReleasedProjects.ReplaceRange(GetProjectByStatusUtility.GetReleasedProjects(_projectStore.Projects.ToList()).Take(8));
+                    OngoingProjects.ReplaceRange(GetProjectByStatusUtility.GetOngoingProjects(AppStore.Projects.ToList()).Take(8));
+                    FreshProjects.ReplaceRange(GetProjectByStatusUtility.GetFreshProjects(AppStore.Projects.ToList()).Take(8));
+                    ReleasedProjects.ReplaceRange(GetProjectByStatusUtility.GetReleasedProjects(AppStore.Projects.ToList()).Take(8));
                 });
             });
         }
@@ -104,11 +102,11 @@ public partial class MainPageModel(
             }
 
             //// Load ongoing projects from cache !
-            if (_projectStore.Projects.Count is not 0)
+            if (AppStore.Projects.Count is not 0)
             {
-                OngoingProjects.ReplaceRange(GetProjectByStatusUtility.GetOngoingProjects(_projectStore.Projects.ToList()).Take(8));
-                FreshProjects.ReplaceRange(GetProjectByStatusUtility.GetFreshProjects(_projectStore.Projects.ToList()).Take(8));
-                ReleasedProjects.ReplaceRange(GetProjectByStatusUtility.GetReleasedProjects(_projectStore.Projects.ToList()).Take(8));
+                OngoingProjects.ReplaceRange(GetProjectByStatusUtility.GetOngoingProjects(AppStore.Projects.ToList()).Take(8));
+                FreshProjects.ReplaceRange(GetProjectByStatusUtility.GetFreshProjects(AppStore.Projects.ToList()).Take(8));
+                ReleasedProjects.ReplaceRange(GetProjectByStatusUtility.GetReleasedProjects(AppStore.Projects.ToList()).Take(8));
 
                 return;
             }
@@ -134,7 +132,7 @@ public partial class MainPageModel(
             {
                 {"Title", "Ongoing projects"},
                 {"IsOngoing",true },
-                {"Projects",GetProjectByStatusUtility.GetOngoingProjects([.. _projectStore.Projects])}
+                {"Projects",GetProjectByStatusUtility.GetOngoingProjects([.. AppStore.Projects])}
             }
             );
 
@@ -147,7 +145,7 @@ public partial class MainPageModel(
             {
                 {"Title", "Find new project"},
                 {"IsOngoing",false },
-                {"Projects",GetProjectByStatusUtility.GetFreshProjects([.._projectStore.Projects])}
+                {"Projects",GetProjectByStatusUtility.GetFreshProjects([..AppStore.Projects])}
             }
             );
 
@@ -160,7 +158,7 @@ public partial class MainPageModel(
             {
                 {"Title", "Released projects"},
                 {"IsReleased",true },
-                {"Projects",GetProjectByStatusUtility.GetReleasedProjects([.. _projectStore.Projects])}
+                {"Projects",GetProjectByStatusUtility.GetReleasedProjects([.. AppStore.Projects])}
             }
             );
 }

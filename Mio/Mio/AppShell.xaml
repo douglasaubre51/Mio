@@ -7,7 +7,7 @@
        xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
        Title="Mio"
        FlyoutBackground="{x:AppThemeBinding Light={x:StaticResource FlyoutBg},
-                                            Dark={x:StaticResource Gray600}}"
+                                            Dark=Transparent}"
        Shell.FlyoutBehavior="{OnPlatform Android=Disabled,
                                          WinUI=Flyout}">
     <Shell.Behaviors>
@@ -17,27 +17,32 @@
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="{OnPlatform Android=True, WinUI=False}">
         <ShellContent Title="Home"
                       ContentTemplate="{x:DataTemplate local:MainPage}"
-                      Icon="ic_fluent_home_28_regular.png"
+                      Icon="{x:AppThemeBinding Light=ic_fluent_home_28_regular.png,
+                                               Dark=home_28dp_white.png}"
                       Route="MainPage" />
 
         <ShellContent Title="New"
                       ContentTemplate="{x:DataTemplate pages:AddProject}"
-                      Icon="docs_add_on_28dp.png"
+                      Icon="{x:AppThemeBinding Light=docs_add_on_28dp.png,
+                                               Dark=docs_add_on_28dp_white.png}"
                       Route="AddProject" />
 
         <ShellContent Title="Search"
                       ContentTemplate="{x:DataTemplate pages:Search}"
-                      Icon="search_28dp.png"
+                      Icon="{x:AppThemeBinding Light=search_28dp.png,
+                                               Dark=search_28dp_white.png}"
                       Route="Search" />
 
         <ShellContent Title="Saved"
                       ContentTemplate="{x:DataTemplate pages:Saved}"
-                      Icon="bookmarks_28dp.png"
+                      Icon="{x:AppThemeBinding Light=bookmarks_28dp.png,
+                                               Dark=bookmarks_28dp_white.png}"
                       Route="Saved" />
 
         <ShellContent Title="Finished"
                       ContentTemplate="{x:DataTemplate pages:Finished}"
-                      Icon="checklist_28dp_000000.png"
+                      Icon="{x:AppThemeBinding Light=checklist_28dp_000000.png,
+                                               Dark=checklist_28dp_white.png}"
                       Route="Finished" />
     </FlyoutItem>
 </Shell>

@@ -12,86 +12,91 @@
         <ToolbarItem Command="{x:Binding RefreshingCommand}" IconImageSource="refresh_24dp.png" />
     </ContentPage.ToolbarItems>
 
-    <CollectionView ItemsSource="{x:Binding ReleasedProjects}">
-        <CollectionView.Header>
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
-                <!--  Spinner  -->
-                <ActivityIndicator Margin="16,0"
-                                   HorizontalOptions="End"
-                                   IsRunning="{x:Binding IsProjectCollectionRefreshing}"
-                                   IsVisible="{x:Binding IsProjectCollectionRefreshing}" />
+    <Grid RowDefinitions="*">
+        <!--  Spinner  -->
+        <ActivityIndicator Grid.Row="0"
+                           Margin="16,0"
+                           HorizontalOptions="Center"
+                           IsRunning="{x:Binding IsProjectCollectionRefreshing}"
+                           IsVisible="{x:Binding IsProjectCollectionRefreshing}" />
 
-                <!--  Title  -->
-                <Label Grid.Row="0"
-                       Margin="8"
-                       HorizontalOptions="Center"
-                       Style="{x:StaticResource HeroTitle}"
-                       Text="Mio" />
+        <CollectionView Grid.Row="0"
+                        Margin="0,0,0,8"
+                        ItemsSource="{x:Binding ReleasedProjects}">
+            <CollectionView.Header>
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+                    <!--  Title  -->
+                    <Label Grid.Row="0"
+                           Margin="8"
+                           HorizontalOptions="Center"
+                           Style="{x:StaticResource HeroTitle}"
+                           Text="Mio" />
 
-                <!--  Ongoing projects section  -->
-                <HorizontalStackLayout Grid.Row="1" IsVisible="{x:Binding IsNotBusy}">
-                    <Label Margin="8,0,0,0"
-                           Style="{x:StaticResource SectionTitle}"
-                           Text="Ongoing projects"
-                           VerticalOptions="Center" />
+                    <!--  Ongoing projects section  -->
+                    <HorizontalStackLayout Grid.Row="1" IsVisible="{x:Binding IsNotBusy}">
+                        <Label Margin="8,0,0,0"
+                               Style="{x:StaticResource SectionTitle}"
+                               Text="Ongoing projects"
+                               VerticalOptions="Center" />
 
-                    <Button Padding="0"
-                            Command="{x:Binding GoToMoreOngoingProjectsCommand}"
-                            ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,
-                                                            Light=arrow_forward_ios_24dp_black.png}"
-                            Style="{x:StaticResource ExtraButton}"
-                            VerticalOptions="Center" />
-                </HorizontalStackLayout>
+                        <Button Padding="0"
+                                Command="{x:Binding GoToMoreOngoingProjectsCommand}"
+                                ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,
+                                                                Light=arrow_forward_ios_24dp_black.png}"
+                                Style="{x:StaticResource ExtraButton}"
+                                VerticalOptions="Center" />
+                    </HorizontalStackLayout>
 
-                <widgets:GalleryWidget Grid.Row="2"
-                                       Margin="0,0,0,32"
-                                       ItemsSource="{x:Binding OngoingProjects}" />
+                    <widgets:GalleryWidget Grid.Row="2"
+                                           Margin="0,0,0,32"
+                                           ItemsSource="{x:Binding OngoingProjects}" />
 
-                <!--  Find projects section  -->
-                <HorizontalStackLayout Grid.Row="3" IsVisible="{x:Binding IsNotBusy}">
-                    <Label Margin="8,0,0,0"
-                           Style="{x:StaticResource SectionTitle}"
-                           Text="Find new project"
-                           VerticalOptions="Center" />
+                    <!--  Find projects section  -->
+                    <HorizontalStackLayout Grid.Row="3" IsVisible="{x:Binding IsNotBusy}">
+                        <Label Margin="8,0,0,0"
+                               Style="{x:StaticResource SectionTitle}"
+                               Text="Find new project"
+                               VerticalOptions="Center" />
 
-                    <Button Command="{x:Binding GoToFindMoreProjectsCommand}"
-                            ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,
-                                                            Light=arrow_forward_ios_24dp_black.png}"
-                            Style="{x:StaticResource ExtraButton}"
-                            VerticalOptions="Center" />
-                </HorizontalStackLayout>
+                        <Button Command="{x:Binding GoToFindMoreProjectsCommand}"
+                                ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,
+                                                                Light=arrow_forward_ios_24dp_black.png}"
+                                Style="{x:StaticResource ExtraButton}"
+                                VerticalOptions="Center" />
+                    </HorizontalStackLayout>
 
-                <widgets:GalleryWidget Grid.Row="4"
-                                       Margin="0,0,0,32"
-                                       ItemsSource="{x:Binding FreshProjects}" />
+                    <widgets:GalleryWidget Grid.Row="4"
+                                           Margin="0,0,0,32"
+                                           ItemsSource="{x:Binding FreshProjects}" />
 
-                <HorizontalStackLayout Grid.Row="5" IsVisible="{x:Binding IsNotBusy}">
-                    <Label Margin="8,0,0,0"
-                           Style="{x:StaticResource SectionTitle}"
-                           Text="Released projects"
-                           VerticalOptions="Center" />
+                    <HorizontalStackLayout Grid.Row="5" IsVisible="{x:Binding IsNotBusy}">
+                        <Label Margin="8,0,0,0"
+                               Style="{x:StaticResource SectionTitle}"
+                               Text="Released projects"
+                               VerticalOptions="Center" />
 
-                    <Button Padding="0"
-                            Command="{x:Binding GoToMoreReleasedProjectsCommand}"
-                            ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,
-                                                            Light=arrow_forward_ios_24dp_black.png}"
-                            Style="{x:StaticResource ExtraButton}"
-                            VerticalOptions="Center" />
-                </HorizontalStackLayout>
-            </Grid>
-        </CollectionView.Header>
+                        <Button Padding="0"
+                                Command="{x:Binding GoToMoreReleasedProjectsCommand}"
+                                ImageSource="{x:AppThemeBinding Dark=arrow_forward_ios_24dp_white.png,
+                                                                Light=arrow_forward_ios_24dp_black.png}"
+                                Style="{x:StaticResource ExtraButton}"
+                                VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Grid>
+            </CollectionView.Header>
 
-        <!--  Released projects section !  -->
-        <CollectionView.ItemTemplate>
-            <templates:ProjectTactileTemplate />
-        </CollectionView.ItemTemplate>
+            <!--  Released projects section !  -->
+            <CollectionView.ItemTemplate>
+                <templates:ProjectTactileTemplate />
+            </CollectionView.ItemTemplate>
 
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout HorizontalItemSpacing="8"
-                             Orientation="Vertical"
-                             Span="{x:OnPlatform Android=1,
-                                                 WinUI=4}"
-                             VerticalItemSpacing="8" />
-        </CollectionView.ItemsLayout>
-    </CollectionView>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout HorizontalItemSpacing="8"
+                                 Orientation="Vertical"
+                                 Span="{x:OnPlatform Android=1,
+                                                     WinUI=4}"
+                                 VerticalItemSpacing="8" />
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+    </Grid>
 </ContentPage>

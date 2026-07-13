@@ -74,14 +74,11 @@ public partial class EditProjectPageModel(
                 || string.IsNullOrWhiteSpace(DependField)
                 || string.IsNullOrWhiteSpace(ProjectSpecField))
             {
-                await Shell.Current.DisplayAlertAsync(
-                    "Validation error",
-                    "Fill all the fields!",
-                    "Continue");
+                await AlertUtility.Alert("Enter all fields !");
                 return;
             }
 
-            bool result = await _projectServ.Update(new ProjectModel
+            ProjectModel editedProject = new ProjectModel
             {
                 Id = CurrentProject.Id,
                 Title = TitleField,
@@ -91,37 +88,21 @@ public partial class EditProjectPageModel(
                 ProjectSpec = ProjectSpecField,
                 IsFinished = IsFinished,
                 IsOngoing = IsOngoing,
-                IsReleased = IsReleased
-            });
+                IsReleased = IsReleased,
+                IsBookmarked = CurrentProject.IsBookmarked
+            };
+            bool result = await _projectServ.Update(editedProject);
             if (result is false)
             {
-                await Shell.Current.DisplayAlertAsync(
-                    "Error",
-                    "Couldnot edit project!",
-                    "Continue");
-
+                await AlertUtility.Error("Project couldnot be edited !");
                 return;
             }
 
-            TitleField = string.Empty;
-            DescField = string.Empty;
-            ShortDescField = string.Empty;
-            DependField = string.Empty;
-            ProjectSpecField = string.Empty;
+            ProjectModel toBeUpdatedProject = AppStore.Projects.Single(project => project.Id == CurrentProject.Id);
+            AppStore.Projects.Remove(toBeUpdatedProject);
+            AppStore.Projects.Add(editedProject);
 
-            await Shell.Current.DisplayAlertAsync(
-                "Success",
-                "Project edited!",
-                "Continue");
-            await Shell.Current.GoToAsync(
-                "///MainPage",
-                true,
-                new Dictionary<string, object>
-                {
-                    {
-                        "NewProjectAdded", true
-                    }
-                });
+            await AlertUtility.Alert("Project has been edited.");
         }
         catch (Exception ex)
         {

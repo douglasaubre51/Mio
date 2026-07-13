@@ -17,6 +17,7 @@ public partial class DetailsPageModel(
     [ObservableProperty]
     private bool isPageLoading;
 
+
     [RelayCommand]
     async Task GoBack()
     {
@@ -44,17 +45,15 @@ public partial class DetailsPageModel(
         bool result = await _projectServ.Delete(CurrentProject.Id);
         if (result is false)
         {
-            await Shell.Current.DisplayAlertAsync(
-                "Delete Project",
-                "Cannot undo this action!",
-                "Ok");
+            await AlertUtility.Error("Project couldnot be deleted !");
             return;
         }
 
-        await Shell.Current.DisplayAlertAsync(
-            "Deleted Project",
-            "Go back to Home page",
-            "Ok");
+        ProjectModel deletedProject = AppStore.Projects.Single(project => project.Id == CurrentProject.Id);
+        AppStore.Projects.Remove(deletedProject);
+
+        await AlertUtility.Alert("Project deleted.");
+
         await Shell.Current.GoToAsync(
             "///MainPage",
             true,
@@ -89,6 +88,9 @@ public partial class DetailsPageModel(
         try
         {
             await _projectServ.AddBookmark(CurrentProject.Id);
+            ProjectModel selectedProject = AppStore.Projects.Single(project => project.Id == CurrentProject.Id);
+            selectedProject.IsBookmarked = true;
+
             IsNotBookmarked = false;
             IsBookmarked = true;
         }
@@ -110,6 +112,9 @@ public partial class DetailsPageModel(
         try
         {
             await _projectServ.RemoveBookmark(CurrentProject.Id);
+            ProjectModel selectedProject = AppStore.Projects.Single(project => project.Id == CurrentProject.Id);
+            selectedProject.IsBookmarked = false;
+
             IsNotBookmarked = true;
             IsBookmarked = false;
         }

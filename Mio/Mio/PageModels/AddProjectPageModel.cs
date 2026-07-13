@@ -41,11 +41,11 @@ public partial class AddProjectPageModel(
                 || string.IsNullOrWhiteSpace(DependField)
                 || string.IsNullOrWhiteSpace(ProjectSpecField))
             {
-                await AlertUtility.Alert("Enter all fields!");
+                await AlertUtility.Alert("Enter all fields !");
                 return;
             }
 
-            bool result = await _projectServ.Add(new ProjectModel
+            ProjectModel newProject = new ProjectModel
             {
                 Title = TitleField,
                 Desc = DescField,
@@ -55,17 +55,19 @@ public partial class AddProjectPageModel(
                 IsFinished = IsFinished,
                 IsReleased = IsReleased,
                 IsOngoing = IsOngoing
-            });
+            };
+            bool result = await _projectServ.Add(newProject);
             if (result is false)
             {
-                await Shell.Current.DisplayAlertAsync(
-                    "Success",
-                    "Added new project to database!",
-                    "Continue");
-
+                await AlertUtility.Error("Project couldnot be created !");
                 return;
             }
 
+            // Add to local state.
+            AppStore.Projects.Add(newProject);
+            AppStore.IsRefreshNeeded = true;
+
+            // Clear all fields !
             TitleField = string.Empty;
             DescField = string.Empty;
             ShortDescField = string.Empty;
@@ -75,23 +77,11 @@ public partial class AddProjectPageModel(
             IsReleased = false;
             IsFinished = false;
 
-            await Shell.Current.DisplayAlertAsync(
-                "Success",
-                "Added new project to database!",
-                "Continue");
-            await Shell.Current.GoToAsync(
-                "///MainPage",
-                true,
-                new Dictionary<string, object>
-                {
-                    {
-                        "NewProjectAdded", true
-                    }
-                });
+            await AlertUtility.Alert("New project created.");
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex);
+            Debug.WriteLine("Add project error: " + ex.Message);
             await Shell.Current.DisplayAlertAsync(
                 "Error",
                 "Error occured during project creation!",

@@ -111,7 +111,7 @@
 
     <Style x:Key="FlatIconButton" TargetType="Button">
         <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="TextColor" Value="{x:AppThemeBinding Light=Black, Dark=White}" />
         <Setter Property="BackgroundColor" Value="{x:AppThemeBinding Light=Transparent, Dark={x:StaticResource Gray600}}" />
         <Setter Property="Padding" Value="8" />
         <Setter Property="FontFamily" Value="PoppinsMedium" />
@@ -239,7 +239,7 @@
 
 
     <Style TargetType="ActivityIndicator">
-        <Setter Property="Color" Value="{AppThemeBinding Light={x:StaticResource PrimaryBgDark}, Dark={x:StaticResource Primary}}" />
+        <Setter Property="Color" Value="{AppThemeBinding Light={x:StaticResource PrimaryBgDark}, Dark={x:StaticResource White}}" />
 
         <Setter Property="WidthRequest" Value="{x:OnIdiom Desktop=32, Phone=24}" />
         <Setter Property="HeightRequest" Value="{x:OnIdiom Desktop=32, Phone=24}" />

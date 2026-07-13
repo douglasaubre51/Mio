@@ -8,7 +8,7 @@
              Shell.TabBarIsVisible="False">
     <ScrollView Orientation="Vertical">
         <VerticalStackLayout Margin="16"
-                             MaximumWidthRequest="{x:OnPlatform WinUI=700}"
+                             MaximumWidthRequest="{x:OnPlatform WinUI=800}"
                              Spacing="16">
             <!--  Top bar  -->
             <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2">

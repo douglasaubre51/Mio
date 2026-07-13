@@ -14,5 +14,4 @@ public class ProjectModel
     public bool IsFinished { get; set; }
 
     public bool IsBookmarked { get; set; }
-    public bool IsNotBookmarked => !IsBookmarked;
 }
