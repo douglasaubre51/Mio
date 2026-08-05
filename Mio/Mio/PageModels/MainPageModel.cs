@@ -63,17 +63,13 @@ public partial class MainPageModel(
             IsBusy = true;
             IsProjectCollectionRefreshing = true;
 
-            await Task.Run(async () =>
-            {
-                AppStore.Projects = await _projectServ.GetAll() ?? new List<ProjectModel>();
+            AppStore.Projects = await _projectServ.GetAll() ?? [];
 
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    OngoingProjects.ReplaceRange(GetProjectByStatusUtility.GetOngoingProjects(AppStore.Projects.ToList()).Take(8));
-                    FreshProjects.ReplaceRange(GetProjectByStatusUtility.GetFreshProjects(AppStore.Projects.ToList()).Take(8));
-                    ReleasedProjects.ReplaceRange(GetProjectByStatusUtility.GetReleasedProjects(AppStore.Projects.ToList()).Take(8));
-                });
-            });
+            if (AppStore.Projects.Count is 0) return;
+
+            OngoingProjects.ReplaceRange(GetProjectByStatusUtility.GetOngoingProjects(AppStore.Projects.ToList()).Take(8));
+            FreshProjects.ReplaceRange(GetProjectByStatusUtility.GetFreshProjects(AppStore.Projects.ToList()).Take(8));
+            ReleasedProjects.ReplaceRange(GetProjectByStatusUtility.GetReleasedProjects(AppStore.Projects.ToList()).Take(8));
         }
         catch (Exception ex)
         {
@@ -116,6 +112,11 @@ public partial class MainPageModel(
 
             // Trigger Http GET request !
             await Refreshing();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine("Mainpage load error: " + ex.Message);
+            await AlertUtility.Error("Something went wrong! Restart the app.");
         }
         finally
         {

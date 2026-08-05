@@ -20,10 +20,10 @@
 		<WindowsPackageType>None</WindowsPackageType>
 		<PublishAot>False</PublishAot>
 		<PublishTrimmed>False</PublishTrimmed>
-		<Title>forge.com</Title>
-		<Company>Forge</Company>
-		<Product>Mio</Product>
-		<AssemblyVersion>2.0.0</AssemblyVersion>
+		<Title></Title>
+		<Company></Company>
+		<Product></Product>
+		<AssemblyVersion></AssemblyVersion>
 
 	</PropertyGroup>
 

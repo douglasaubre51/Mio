@@ -12,6 +12,13 @@
         <collectionmodels:ProjectGalleryTemplate />
     </CollectionView.ItemTemplate>
 
+    <!--
+        Apparently if you dont set the empty collection template and initialize the collection with an
+        empty list at runtime the app will crash due to null error by accessing the collection objects props!
+        
+        But this solution is not guaranteed!
+    -->
+
     <!--<CollectionView.EmptyView>
         <collectionmodels:EmptyCollectionTemplate />
     </CollectionView.EmptyView>-->

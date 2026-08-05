@@ -9,11 +9,5 @@
            FontFamily="PoppinsSemiBold"
            FontSize="16"
            Text="Soo empty..."
-           TextColor="WhiteSmoke" />
-
-    <Label Grid.Row="1"
-           FontFamily="PoppinsRegular"
-           FontSize="14"
-           Text="Try adding new projects!"
-           TextColor="WhiteSmoke" />
+           TextColor="Black" />
 </Grid>

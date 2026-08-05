@@ -8,22 +8,22 @@
 		<UseMaui>true</UseMaui>
 		<Nullable>enable</Nullable>
 		<MauiEnableXamlCBindingCodeGeneration>true</MauiEnableXamlCBindingCodeGeneration>
-		<PublishAot>True</PublishAot>
+		<PublishAot>False</PublishAot>
 		<PublishTrimmed>False</PublishTrimmed>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<ApplicationTitle>Mio</ApplicationTitle>
-		<ApplicationId>com.forge.mio</ApplicationId>
-		<ApplicationDisplayVersion>2.0.0</ApplicationDisplayVersion>
-		<ApplicationVersion>2</ApplicationVersion>
+		<ApplicationTitle></ApplicationTitle>
+		<ApplicationId></ApplicationId>
+		<ApplicationDisplayVersion></ApplicationDisplayVersion>
+		<ApplicationVersion></ApplicationVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<ApplicationTitle>Mio</ApplicationTitle>
-		<ApplicationId>com.forge.mio</ApplicationId>
-		<ApplicationDisplayVersion>2.0.0</ApplicationDisplayVersion>
-		<ApplicationVersion>2</ApplicationVersion>
+		<ApplicationTitle></ApplicationTitle>
+		<ApplicationId></ApplicationId>
+		<ApplicationDisplayVersion></ApplicationDisplayVersion>
+		<ApplicationVersion></ApplicationVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

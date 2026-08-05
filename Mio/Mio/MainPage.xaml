@@ -33,7 +33,7 @@
                            Text="Mio" />
 
                     <!--  Ongoing projects section  -->
-                    <HorizontalStackLayout Grid.Row="1" IsVisible="{x:Binding IsNotBusy}">
+                    <HorizontalStackLayout Grid.Row="1">
                         <Label Margin="8,0,0,0"
                                Style="{x:StaticResource SectionTitle}"
                                Text="Ongoing projects"
@@ -52,7 +52,7 @@
                                            ItemsSource="{x:Binding OngoingProjects}" />
 
                     <!--  Find projects section  -->
-                    <HorizontalStackLayout Grid.Row="3" IsVisible="{x:Binding IsNotBusy}">
+                    <HorizontalStackLayout Grid.Row="3">
                         <Label Margin="8,0,0,0"
                                Style="{x:StaticResource SectionTitle}"
                                Text="Find new project"
@@ -69,7 +69,7 @@
                                            Margin="0,0,0,32"
                                            ItemsSource="{x:Binding FreshProjects}" />
 
-                    <HorizontalStackLayout Grid.Row="5" IsVisible="{x:Binding IsNotBusy}">
+                    <HorizontalStackLayout Grid.Row="5">
                         <Label Margin="8,0,0,0"
                                Style="{x:StaticResource SectionTitle}"
                                Text="Released projects"
